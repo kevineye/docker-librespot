@@ -15,6 +15,7 @@ RUN apk -U add curl cargo portaudio-dev protobuf-dev \
  && apk add llvm-libunwind \
  && rm -rf /etc/ssl /var/cache/apk/* /lib/apk/db/* /root/master.zip /root/librespot-master /root/.cargo
 
-ENV name Docker
+ENV SPOTIFY_NAME Docker
+ENV SPOTIFY_DEVICE /data/fifo
 
-CMD librespot -n $name --username=$user --password=$password --device=/data/fifo
+CMD librespot -n "$SPOTIFY_NAME" -u "$SPOTIFY_USER" -p "$SPOTIFY_PASSWORD" --device "$SPOTIFY_DEVICE"
